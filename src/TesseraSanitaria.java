@@ -43,7 +43,7 @@ public class TesseraSanitaria {
         return this.birthYear;
     }
 
-    public String BirthDate() {
+    public String getBirthDate() {
         return this.birthDate;
     }
 
