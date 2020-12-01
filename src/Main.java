@@ -1,35 +1,53 @@
+
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         Scanner reader = new Scanner(System.in);
 
-        System.out.print("Name: ");
-        String name = reader.nextLine();
+        System.out.print("Cosa vuoi fare? ( Aggiungi - Elimina - Lista - Vedi - Esci ): ");
+        String risposta = reader.nextLine();
+        Boolean fine = true;
 
-        System.out.print("Surname: ");
-        String surname = reader.nextLine();
+        while (fine) {
 
-        System.out.print("Birth day: ");
-        int birthDay = Integer.parseInt(reader.nextLine());
+            if (risposta.equals("Esci")) {
+                fine = false;
+            }
 
-        System.out.print("Birth month: ");
-        int birthMonth = Integer.parseInt(reader.nextLine());
+            while (risposta.equals("Aggiungi")) {
 
-        System.out.print("Birth year: ");
-        int birthYear = Integer.parseInt(reader.nextLine());
+                System.out.print("Name: ");
+                String name = reader.nextLine();
 
-        String birthDate = birthDay + "/" + birthMonth + "/" + birthYear ;
+                System.out.print("Surname: ");
+                String surname = reader.nextLine();
 
-        System.out.print("Birth place: ");
-        String birthPlace = reader.nextLine();
+                System.out.print("Birth day: ");
+                int birthDay = Integer.parseInt(reader.nextLine());
 
-        String fiscalCode = "" + surname.charAt(0) + surname.charAt(surname.length() / 2 - 1) + surname.charAt(surname.length() - 1) + name.charAt(0) + name.charAt(name.length() / 2 - 1) + name.charAt(name.length() - 1) + birthDay + birthMonth + birthYear + birthPlace.charAt(0) + birthPlace.charAt(1);
-        fiscalCode = fiscalCode.toUpperCase();
+                System.out.print("Birth month: ");
+                int birthMonth = Integer.parseInt(reader.nextLine());
 
-        TesseraSanitaria Bilbo = new TesseraSanitaria(name, surname, birthDay, birthMonth, birthYear, birthDate, birthPlace, fiscalCode);
+                System.out.print("Birth year: ");
+                int birthYear = Integer.parseInt(reader.nextLine());
 
-        Bilbo.printing();
+                System.out.print("Birth place: ");
+                String birthPlace = reader.nextLine();
+
+                TesseraSanitaria tessera = new TesseraSanitaria(name, surname, birthDay, birthMonth, birthYear, birthPlace);
+
+                tessera.printing();
+
+                System.out.print("Continuare? ( Aggiungi - Elimina - Lista - Vedi - Esci ): ");
+                risposta = reader.nextLine();
+            }
+
+
+        }
+
     }
+
+
 }
