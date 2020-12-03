@@ -3,29 +3,30 @@ import java.util.Scanner;
 
 public class Main {
 
+    private static ArrayList<TesseraSanitaria> tessere = new ArrayList<>();
+
     public static void main(String[] args) {
         Scanner reader = new Scanner(System.in);
-        ArrayList<TesseraSanitaria> tessere = new ArrayList<TesseraSanitaria>();
 
         while (true) {
 
             System.out.print("Cosa vuoi fare? (Aggiungi - Lista - Cerca - Elimina - Esci): ");
             String risposta = reader.nextLine();
 
-            switch (risposta) {
-                case "Esci":
+            switch (risposta.toLowerCase()) {
+                case "esci":
                     return;
-                case "Aggiungi":
-                    tessere.add(aggiungi());
+                case "aggiungi":
+                    aggiungi();
                     break;
-                case "Lista":
-                    lista(tessere);
+                case "lista":
+                    lista();
                     break;
-                case "Cerca":
-                    cerca(tessere);
+                case "cerca":
+                    cerca();
                     break;
-                case "Elimina":
-                    rimuovi(tessere);
+                case "elimina":
+                    rimuovi();
                     break;
                 default:
                     System.out.print("Comando non esistente!");
@@ -35,33 +36,33 @@ public class Main {
 
     }
 
-    public static TesseraSanitaria aggiungi () {
+    public static void aggiungi () {
         Scanner reader = new Scanner(System.in);
 
-        System.out.print("Name: ");
+        System.out.print("Nome: ");
         String name = reader.nextLine();
 
-        System.out.print("Surname: ");
+        System.out.print("Cognome: ");
         String surname = reader.nextLine();
 
-        System.out.print("Birth day: ");
+        System.out.print("Giorno di nascità: ");
         int birthDay = Integer.parseInt(reader.nextLine());
 
-        System.out.print("Birth month: ");
+        System.out.print("Mese di nascità: ");
         int birthMonth = Integer.parseInt(reader.nextLine());
 
-        System.out.print("Birth year: ");
+        System.out.print("Anno di nascità: ");
         int birthYear = Integer.parseInt(reader.nextLine());
 
-        System.out.print("Birth place: ");
+        System.out.print("Luogo di nascità: ");
         String birthPlace = reader.nextLine();
 
         TesseraSanitaria tessera = new TesseraSanitaria(name, surname, birthDay, birthMonth, birthYear, birthPlace);
 
-        return tessera;
+        tessere.add(tessera);
     }
 
-    public static ArrayList<TesseraSanitaria> rimuovi (ArrayList<TesseraSanitaria> tessere) {
+    public static ArrayList<TesseraSanitaria> rimuovi () {
         Scanner reader = new Scanner(System.in);
         int count = 0;
         for (TesseraSanitaria tessera : tessere){
@@ -83,7 +84,7 @@ public class Main {
         return tessere;
     }
 
-    public static void lista (ArrayList<TesseraSanitaria> tessere) {
+    public static void lista () {
         int count = 0;
         for (TesseraSanitaria tessera : tessere){
             count++;
@@ -93,7 +94,7 @@ public class Main {
         }
     }
 
-    public static void cerca (ArrayList<TesseraSanitaria> tessere) {
+    public static void cerca () {
         Scanner reader = new Scanner(System.in);
 
         while (true) {
@@ -101,9 +102,11 @@ public class Main {
 
             String risposta = reader.nextLine();
 
-            switch (risposta) {
+            switch (risposta.toLowerCase()) {
 
-                case "Nome":
+                case "esci":
+                    return;
+                case "nome":
                     System.out.print("Scrivi il nome: ");
                     String nome = reader.nextLine();
                     for (TesseraSanitaria tessera : tessere){
@@ -112,7 +115,7 @@ public class Main {
                         }
                     }
                     break;
-                case "Cognome":
+                case "cognome":
                     System.out.print("Scrivi il cognome: ");
                     String cognome = reader.nextLine();
                     for (TesseraSanitaria tessera : tessere){
@@ -121,7 +124,7 @@ public class Main {
                         }
                     }
                     break;
-                case "Giorno":
+                case "giorno":
                     System.out.print("Scrivi il giorno: ");
                     int giorno = Integer.parseInt(reader.nextLine());
                     for (TesseraSanitaria tessera : tessere){
@@ -130,7 +133,7 @@ public class Main {
                         }
                     }
                     break;
-                case "Mese":
+                case "mese":
                     System.out.print("Scrivi il mese: ");
                     int mese = Integer.parseInt(reader.nextLine());
                     for (TesseraSanitaria tessera : tessere){
@@ -139,7 +142,7 @@ public class Main {
                         }
                     }
                     break;
-                case "Anno":
+                case "anno":
                     System.out.print("Scrivi l'anno: ");
                     int anno = Integer.parseInt(reader.nextLine());
                     for (TesseraSanitaria tessera : tessere){
@@ -148,7 +151,7 @@ public class Main {
                         }
                     }
                     break;
-                case "Data di nascità":
+                case "data di nascità":
                     System.out.print("Scrivi la data di nascità (GG/MM/AAAA): ");
                     String data = reader.nextLine();
                     for (TesseraSanitaria tessera : tessere){
@@ -157,7 +160,7 @@ public class Main {
                         }
                     }
                     break;
-                case "Luogo di nascità":
+                case "luogo di nascità":
                     System.out.print("Scrivi il luogo di nascità: ");
                     String luogo = reader.nextLine();
                     for (TesseraSanitaria tessera : tessere){
@@ -166,7 +169,7 @@ public class Main {
                         }
                     }
                     break;
-                case "Codice fiscale":
+                case "codice fiscale":
                     System.out.print("Scrivi il codice fiscale: ");
                     String codice = reader.nextLine();
                     for (TesseraSanitaria tessera : tessere){
@@ -175,8 +178,6 @@ public class Main {
                         }
                     }
                     break;
-                case "Esci":
-                    return;
                 default:
                     System.out.println("Non esiste questo comando!");
             }
